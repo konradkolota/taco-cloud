@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud Application</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<form method="post" th:action="@{/orders}" th:object="${order}">
+<h1>Order Your Taco!</h1>
+    <a th:href="@{/design}" id="another">Make another taco!</a>
+
+    <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Remove following errors and try again!
+        </span>
+    </div>
+
+    <h3>Delivery address...</h3>
+
+    <label for="name">First name and last name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+
+    <label for="street">Street: </label>
+    <input type="text" th:field="*{street}" id="street">
+    <br/>
+
+    <label for="city">City: </label>
+    <input type="text" th:field="*{city}" id="city">
+    <br/>
+
+    <label for="state">State: </label>
+    <input type="text" th:field="*{state}" id="state">
+    <br/>
+
+    <label for="zip">Postal Code: </label>
+    <input type="text" th:field="*{zip}" id="zip">
+    <br/>
+
+    <h3>Payment method</h3>
+    <label for="ccNumber">Credit Card Number: </label>
+    <input type="text" th:field="*{ccNumber}" id="ccNumber">
+    <span class="validationError" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">Invalid credit card number!</span>
+    <br/>
+
+    <label for="ccExpiration">Expiration Date: </label>
+    <input type="text" th:field="*{ccExpiration}" id="ccExpiration">
+    <br/>
+
+    <label for="ccCVV">CVV Code: </label>
+    <input type="text" th:field="*{ccCVV}" id="ccCVV">
+    <br/>
+
+    <input type="submit" value="Make an order!">
+</form>
+</body>
+</html>
