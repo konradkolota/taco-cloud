@@ -53,7 +53,7 @@ public class DesignTacoController {
     @PostMapping
     public String processDesign(@Valid Taco design, Errors errors) {
         if (errors.hasErrors()){
-            return "redirect:/design";
+            return "redirect:/design"; //TODO zapytać o wyświetlenie błędu, jak to zrobić bez redirect
         }
         log.info("Processing taco design: " + design);
         return "redirect:/orders/current";
