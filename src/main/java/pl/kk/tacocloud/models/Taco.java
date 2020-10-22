@@ -17,6 +17,6 @@ public class Taco {
     @Size(min = 5, message = "Name should contains at least five characters!")
     private String name;
     @Size(min = 1, message = "You have to choose at leas one ingredient!")
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
 
 }
